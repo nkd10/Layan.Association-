@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ليان للإغاثة والتنمية والإعمار | بناء المستقبل معاً</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a6aa2;
+            --secondary: #28a9e0;
+            --accent: #f9b233;
+            --light: #f0f7ff;
+            --dark: #0d3c61;
+            --text: #333;
+            --success: #2ecc71;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'Tajawal', sans-serif;
+        }
+        
+        body {
+            line-height: 1.7;
+            color: var(--text);
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+        
+        /* التصميم سريع الاستجابة */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* الهيدر */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 5px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--dark);
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-left: 15px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 3px;
+        }
+        
+        .logo p {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text);
+            padding: 10px 15px;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 15px;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: calc(100% - 30px);
+        }
+        
+        .donate-btn {
+            background: linear-gradient(135deg, var(--accent) 0%, #e89e21 100%);
+            color: white!important;
+            border-radius: 30px;
+            padding: 10px 25px!important;
+            margin-right: 10px;
+            box-shadow: 0 4px 10px rgba(249, 178, 51, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .donate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(249, 178, 51, 0.4);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* القسم البطولي */
+        .hero {
+            background: linear-gradient(rgba(13, 60, 97, 0.85), rgba(13, 60, 97, 0.9)), url('https://images.unsplash.com/photo-1522071901873-411886a10004?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 20px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0 0v46.29c47.79 22.2 103.59 32.17 158 28 70.36-5.37 136.33-33.31 206.8-37.5 73.84-4.36 147.54 16.88 218.2 35.26 69.27 18 138.3 24.88 209.4 13.08 36.15-6 69.85-17.84 104.45-29.34C989.49 25 1113-14.29 1200 52.47V0z" fill="%23f9f9f9"/></svg>');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin: 0 auto 40px;
+            max-width: 700px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(26, 106, 162, 0.3);
+        }
+        
+        .btn i {
+            margin-left: 8px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 7px 20px rgba(26, 106, 162, 0.4);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--light);
+        }
+        
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent) 0%, #e89e21 100%);
+            box-shadow: 0 4px 15px rgba(249, 178, 51, 0.4);
+        }
+        
+        .btn-accent:hover {
+            box-shadow: 0 7px 20px rgba(249, 178, 51, 0.5);
+        }
+        
+        /* الأقسام العامة */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        /* قسم من نحن */
+        .about {
+            background-color: var(--light);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 25px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat-box {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stat-box i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .about-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* قسم البرامج */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .program-image {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .program-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .program-card:hover .program-image img {
+            transform: scale(1.1);
+        }
+        
+        .program-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .program-content h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .program-content p {
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+        
+        .program-icon {
+            background: var(--accent);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .program-icon i {
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        /* قسم الشفافية */
+        .transparency {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .transparency::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="rgba(255,255,255,0.03)" points="0,100 100,0 100,100"/></svg>');
+            background-size: 40px 40px;
+            opacity: 0.3;
+        }
+        
+        .section-title.light h2,
+        .section-title.light p {
+            color: white;
+        }
+        
+        .section-title.light::after {
+            background: var(--accent);
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-item {
+            background: rgba(255,255,255,0.1);
+            padding: 40px 25px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: transform 0.3s;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 15px;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .reports-btn {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        /* قسم قصص التأثير */
+        .stories-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .story {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+        }
+        
+        .story:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        
+        .story-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .story:hover .story-image img {
+            transform: scale(1.1);
+        }
+        
+        .story-content {
+            padding: 30px;
+        }
+        
+        .story-content h3 {
+            font-size: 1.6rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .story-content .date {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        /* قسم التبرع */
+        .donate {
+            background-color: var(--light);
+        }
+        
+        .donate-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .donate-options {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+        
+        .donate-options h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .amount-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .amount-btn {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .amount-btn:hover, .amount-btn.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+        
+        .custom-amount {
+            display: flex;
+            margin-bottom: 25px;
+        }
+        
+        .custom-amount input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px 0 0 10px;
+            font-size: 1.1rem;
+            outline: none;
+        }
+        
+        .custom-amount input:focus {
+            border-color: var(--primary);
+        }
+        
+        .currency {
+            background: #f0f0f0;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            border-radius: 0 10px 10px 0;
+            font-weight: bold;
+        }
+        
+        .donate-type {
+            margin-bottom: 30px;
+        }
+        
+        .type-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .type-option input {
+            margin-left: 10px;
+        }
+        
+        .type-option label {
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .donate-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            height: 100%;
+        }
+        
+        .donate-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .impact-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 30px;
+        }
+        
+        .impact-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        /* الفوتر */
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #0a2a44 100%);
+            color: white;
+            padding: 80px 0 30px;
+            position: relative;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-column p {
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-column ul li a i {
+            margin-left: 10px;
+            color: var(--accent);
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .newsletter form {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .newsletter input {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            outline: none;
+            font-size: 1rem;
+        }
+        
+        .newsletter button {
+            background: var(--accent);
+            color: var(--dark);
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 30px 30px 0;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .newsletter button:hover {
+            background: #ffc247;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+        }
+        
+        .copyright a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .copyright a:hover {
+            color: var(--accent);
+        }
+        
+        /* التكيف مع الجوال */
+        @media (max-width: 992px) {
+            .about-content,
+            .donate-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+            
+            .donate-image {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            nav {
+                order: 3;
+                width: 100%;
+                margin-top: 15px;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                background: white;
+                border-radius: 10px;
+                padding: 15px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+            
+            nav ul li {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 12px;
+                border-radius: 5px;
+            }
+            
+            nav ul li a:hover {
+                background: var(--light);
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .stat-box {
+                padding: 20px 15px;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem;
+            }
+            
+            .amount-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 120px 20px 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/3710/3710315.png" alt="شعار جمعية ليان">
+                <div class="logo-text">
+                    <h1>ليان للإغاثة والتنمية والإعمار</h1>
+                    <p>بناء المستقبل معاً</p>
+                </div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                    <li><a href="#programs">برامجنا</a></li>
+                    <li><a href="#stories">قصص التأثير</a></li>
+                    <li><a href="#transparency">الشفافية</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                    <li><a href="#donate" class="donate-btn">تبرع الآن</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- القسم البطولي -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>نساهم في بناء مستقبل أفضل للمجتمعات المحتاجة</h1>
+                <p>جمعية ليان تعمل على تقديم المساعدات الإنسانية وتنفيذ المشاريع التنموية وإعادة إعمار المناطق المتضررة حول العالم</p>
+                <div class="hero-btns">
+                    <a href="#programs" class="btn btn-secondary"><i class="fas fa-hands-helping"></i> تعرف على برامجنا</a>
+                    <a href="#donate" class="btn btn-accent"><i class="fas fa-donate"></i> تبرع الآن</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم من نحن -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>من نحن</h2>
+                <p>جمعية إنسانية تعمل على تقديم المساعدات للمحتاجين وإعادة بناء المجتمعات</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>رسالتنا الإنسانية</h3>
+                    <p>تأسست جمعية "ليان للإغاثة والتنمية والإعمار" عام 2010 بهدف تقديم المساعدات الإنسانية العاجلة للمتضررين من الكوارث والنزاعات، وتنفيذ مشاريع تنموية مستدامة تساهم في تمكين المجتمعات المحتاجة وإعادة إعمار ما دمرته الحروب والكوارث الطبيعية.</p>
+                    <p>نعمل في أكثر من 20 دولة حول العالم من خلال شبكة من المتطوعين والعاملين الميدانيين الذين يصلون إلى أبعد المناطق لتقديم المساعدة لمن هم في أمس الحاجة إليها.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-box">
+                            <i class="fas fa-globe-asia"></i>
+                            <div class="stat-number">24</div>
+                            <div>دولة حول العالم</div>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <div class="stat-number">850K+</div>
+                            <div>مستفيد سنوياً</div>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fas fa-home"></i>
+                            <div class="stat-number">320</div>
+                            <div>مشروع تنموي</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522071330750-9f5d4b5d9c0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="فريق جمعية ليان">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم البرامج -->
+    <section id="programs">
+        <div class="container">
+            <div class="section-title">
+                <h2>برامجنا ومشاريعنا</h2>
+                <p>برامج متنوعة تلبي الاحتياجات الأساسية وتعمل على تنمية المجتمعات</p>
+            </div>
+            
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="الإغاثة العاجلة">
+                    </div>
+                    <div class="program-content">
+                        <div class="program-icon">
+                            <i class="fas fa-ambulance"></i>
+                        </div>
+                        <h3>الإغاثة العاجلة</h3>
+                        <p>توفير المساعدات الطارئة من غذاء، مياه، أدوية ومأوى للمتضررين من الكوارث الطبيعية والنزاعات في أسرع وقت ممكن.</p>
+                        <a href="#" class="btn">ادعم البرنامج</a>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="التنمية المستدامة">
+                    </div>
+                    <div class="program-content">
+                        <div class="program-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3>التنمية المستدامة</h3>
+                        <p>تنفيذ مشاريع تنموية مستدامة تشمل التعليم، الصحة، المياه، الزراعة وتمكين المرأة لتحقيق التنمية الشاملة.</p>
+                        <a href="#" class="btn">ادعم البرنامج</a>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="إعادة الإعمار">
+                    </div>
+                    <div class="program-content">
+                        <div class="program-icon">
+                            <i class="fas fa-hammer"></i>
+                        </div>
+                        <h3>إعادة الإعمار</h3>
+                        <p>إعادة بناء المنازل والمدارس والمستشفيات والبنى التحتية في المناطق المتضررة من الحروب والكوارث.</p>
+                        <a href="#" class="btn">ادعم البرنامج</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الشفافية -->
+    <section class="transparency" id="transparency">
+        <div class="container">
+            <div class="section-title light">
+                <h2>شفافية الجمعية</h2>
+                <p>نؤمن بأن الشفافية هي أساس ثقة المتبرعين وضمان استمرار عملنا الإنساني</p>
+            </div>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">94%</div>
+                    <div class="stat-label">من التبرعات تذهب مباشرة للمشاريع</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1.2M+</div>
+                    <div class="stat-label">مستفيد من مشاريعنا خلال 2023</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">86</div>
+                    <div class="stat-label">مشروعاً تم تنفيذها العام الماضي</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">تقارير مالية مدققة وشفافة</div>
+                </div>
+            </div>
+            
+            <div class="reports-btn">
+                <a href="#" class="btn btn-accent"><i class="fas fa-file-pdf"></i> تصفح التقارير السنوية</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم قصص التأثير -->
+    <section id="stories">
+        <div class="container">
+            <div class="section-title">
+                <h2>قصص التأثير</h2>
+                <p>قصص حقيقية عن أثر تبرعاتكم في حياة المستفيدين</p>
+            </div>
+            
+            <div class="stories-container">
+                <div class="story">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="قرية المياه">
+                    </div>
+                    <div class="story-content">
+                        <span class="date"><i class="far fa-calendar-alt"></i> 15 مايو 2023</span>
+                        <h3>قرية تنعم بالمياه النظيفة بعد سنوات من المعاناة</h3>
+                        <p>بفضل تبرعاتكم، تم حفر بئر ارتوازي وتوصيل المياه النظيفة لأكثر من 500 أسرة في قرية نائية بعد معاناة استمرت سنوات مع شح المياه.</p>
+                        <a href="#" class="btn">اقرأ القصة كاملة</a>
+                    </div>
+                </div>
+                
+                <div class="story">
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="إعادة إعمار مدرسة">
+                    </div>
+                    <div class="story-content">
+                        <span class="date"><i class="far fa-calendar-alt"></i> 2 أبريل 2023</span>
+                        <h3>إعادة إعمار مدرسة بعد تدميرها بالكامل</h3>
+                        <p>بعد تدمير مدرسة القرية بالكامل بسبب الزلزال، قمنا بإعادة بنائها وتجهيزها لاستقبال 300 طالب وطالبة من أبناء المنطقة.</p>
+                        <a href="#" class="btn">اقرأ القصة كاملة</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التبرع -->
+    <section class="donate" id="donate">
+        <div class="container">
+            <div class="section-title">
+                <h2>تبرع الآن</h2>
+                <p>تبرعك سيصنع الفرق في حياة المحتاجين ويساهم في بناء مجتمعات أفضل</p>
+            </div>
+            
+            <div class="donate-container">
+                <div class="donate-options">
+                    <h3>اختر طريقة تبرعك</h3>
+                    
+                    <div class="amount-options">
+                        <div class="amount-btn" data-amount="100">100 ريال</div>
+                        <div class="amount-btn" data-amount="250">250 ريال</div>
+                        <div class="amount-btn" data-amount="500">500 ريال</div>
+                        <div class="amount-btn" data-amount="1000">1000 ريال</div>
+                        <div class="amount-btn" data-amount="5000">5000 ريال</div>
+                        <div class="amount-btn" data-amount="custom">مبلغ آخر</div>
+                    </div>
+                    
+                    <div class="custom-amount">
+                        <input type="number" placeholder="ادخل المبلغ الذي ترغب به" id="customAmount">
+                        <div class="currency">ريال</div>
+                    </div>
+                    
+                    <div class="donate-type">
+                        <h4>نوع التبرع:</h4>
+                        <div class="type-option">
+                            <input type="radio" id="one-time" name="donation-type" checked>
+                            <label for="one-time">تبرع مرة واحدة</label>
+                        </div>
+                        <div class="type-option">
+                            <input type="radio" id="monthly" name="donation-type">
+                            <label for="monthly">تبرع شهري متكرر</label>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-accent" style="width: 100%; padding: 18px;"><i class="fas fa-donate"></i> تبرع الآن</button>
+                </div>
+                
+                <div class="donate-image">
+                    <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="أثر التبرعات">
+                    <div class="impact-text">
+                        <h3>أثر تبرعاتكم</h3>
+                        <p>كل 100 ريال توفر وجبات غذائية لأسرة لمدة أسبوع كامل</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>عن الجمعية</h3>
+                    <p>جمعية ليان للإغاثة والتنمية والإعمار منظمة خيرية غير ربحية مسجلة رسمياً برقم (54321) تأسست عام 2010 بهدف تقديم المساعدات الإنسانية والتنموية وإعادة الإعمار.</p>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>روابط مهمة</h3>
+                    <ul>
+                        <li><a href="#about"><i class="fas fa-chevron-left"></i> من نحن</a></li>
+                        <li><a href="#programs"><i class="fas fa-chevron-left"></i> برامجنا</a></li>
+                        <li><a href="#transparency"><i class="fas fa-chevron-left"></i> الشفافية</a></li>
+                        <li><a href="#stories"><i class="fas fa-chevron-left"></i> قصص التأثير</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> التقرير السنوي</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>اتصل بنا</h3>
+                    <ul>
+                        <li><a href="tel:+966112345678"><i class="fas fa-phone"></i> 0112345678+</a></li>
+                        <li><a href="mailto:info@layanrelief.org"><i class="fas fa-envelope"></i> info@layanrelief.org</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> الرياض - المملكة العربية السعودية</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> الأحد - الخميس: 8 صباحاً - 4 مساءً</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column newsletter">
+                    <h3>النشرة البريدية</h3>
+                    <p>اشترك لتصلك آخر أخبارنا وتقاريرنا ومشاريعنا الجديدة</p>
+                    <form>
+                        <input type="email" placeholder="بريدك الإلكتروني" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 جمعية ليان للإغاثة والتنمية والإعمار. جميع الحقوق محفوظة. | 
+                   <a href="#">سياسة الخصوصية</a> | <a href="#">شروط الاستخدام</a> | <a href="#">تواصل معنا</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // كود جافا سكريبت للتنقل السلس
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // إغلاق القائمة المتنقلة إذا كانت مفتوحة
+                    const nav = document.getElementById('mainNav');
+                    if (nav.classList.contains('active')) {
+                        nav.classList.remove('active');
+                    }
+                }
+            });
+        });
+        
+        // إضافة تأثير عند التمرير
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // القائمة المتنقلة للجوال
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        menuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            if (mainNav.classList.contains('active')) {
+                menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // اختيار مبلغ التبرع
+        const amountBtns = document.querySelectorAll('.amount-btn');
+        const customAmount = document.getElementById('customAmount');
+        
+        amountBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // إزالة التحديد من جميع الأزرار
+                amountBtns.forEach(b => b.classList.remove('active'));
+                
+                // تحديد الزر المختار
+                this.classList.add('active');
+                
+                // إذا كان المبلغ مخصصاً، فعِّل حقل الإدخال
+                if (this.dataset.amount === 'custom') {
+                    customAmount.disabled = false;
+                    customAmount.focus();
+                } else {
+                    customAmount.disabled = true;
+                    customAmount.value = '';
+                }
+            });
+        });
+        
+        // تمكين حقل المبلغ المخصص عند النقر عليه
+        customAmount.addEventListener('focus', function() {
+            amountBtns.forEach(b => b.classList.remove('active'));
+            document.querySelector('.amount-btn[data-amount="custom"]').classList.add('active');
+        });
+    </script>
+</body>
+</html>
